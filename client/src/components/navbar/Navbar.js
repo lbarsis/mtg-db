@@ -22,11 +22,13 @@ function Navbar() {
         user ?
           <nav>
             <NavLink to='/'>Home</NavLink>
+            <NavLink to='/browse'>Browse</NavLink>
             <button onClick={handleLogout} className='logout-button'>Logout</button>
           </nav>
           :
           <nav>
             <NavLink to='/'>Home</NavLink>
+            <NavLink to='/browse'>Browse</NavLink>
             <NavLink to='/login'>Login</NavLink>
             <NavLink to='/signup'>Signup</NavLink>
           </nav>
