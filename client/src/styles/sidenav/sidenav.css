@@ -1,26 +1,69 @@
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0");
+
 /* The sidebar menu */
 .sidenav {
-  height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 160px; /* Set the width of the sidebar */
-  position: relative; /* Fixed Sidebar (stay in place on scroll) */
-  background-color: #111; /* Black */
+  margin: 25px 5px 25px 25px;
+  height: 800px; /* Full-height: remove this if you want "auto" height */
+  width: 300px; /* Set the width of the sidebar */
+  position: sticky; /* Fixed Sidebar (stay in place on scroll) */
+  top: 50px;
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 20px;
+  box-shadow: 0px 0px 10px 0px rgb(174, 174, 174);
+  background-color: rgba(239, 239, 240, 1);
+  border-radius: 10px;
 }
 
 /* The navigation menu links */
-.sidenav p {
+.sidenav p, label {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: rgba(191, 191, 191, 1);
   display: block;
 }
 
 /* When you mouse over the navigation links, change their color */
-.sidenav p:hover {
-  color: #f1f1f1;
+.sidenav input {
+  display: block;
+  margin: auto;
+  padding: 10px;
+  width: 85%;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgb(174, 174, 174);
 }
+
+.filters-button {
+  width: 85%;
+  display: block;
+  position: absolute;
+  /* justify-items: center; */
+  border: none;
+  right: 25px;
+  bottom: 15px;
+}
+
+.filters-button button {
+  position: absolute;
+  font-size: 25px;
+  right: 0px;
+  bottom: 0px;
+  color: rgba(191, 191, 191, 1);
+  background-color: transparent;
+  border: none;
+  transition: 1000ms;
+}
+
+.filters-button button:hover {
+  font-size: 35px;
+  color: #818181;
+}
+
+.filters-button button:hover {
+  cursor: pointer;
+}
+
 
 /* Style page content */
 .main {

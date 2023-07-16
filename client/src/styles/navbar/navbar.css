@@ -11,6 +11,10 @@
   color: rgba(191, 191, 191, 1);
 }
 
+.navbar a:hover {
+  color: #818181;
+}
+
 .navbar a.active {
   font-weight: bold;
 }
