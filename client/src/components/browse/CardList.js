@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { CardContext } from '../../context/cardContext';
 import CardItem from './CardItem';
+import '../../styles/browse/cardList.css'
 
 function CardList() {
   const { cards, nextPage } = useContext(CardContext)
@@ -10,7 +11,7 @@ function CardList() {
   })
 
   return (
-    <div>
+    <div className='card-list'>
       {displayCards}
       <button onClick={nextPage}>Next Page</button>
     </div>
