@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../../context/userContext';
 import { NavLink, useNavigate } from 'react-router-dom';
+import '../../styles/navbar/navbar.css'
 
 function Navbar() {
   const navigate = useNavigate()
@@ -17,7 +18,7 @@ function Navbar() {
 
 
   return (
-    <div>
+    <div className='navbar'>
       {
         user ?
           <nav>

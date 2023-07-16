@@ -1,9 +1,12 @@
 import React from 'react';
 import CardList from './CardList';
+import '../../styles/browse/browse.css'
+import Sidenav from '../sidenav/Sidenav';
 
 function Browse() {
   return (
-    <div>
+    <div className='browse-container'>
+      <Sidenav />
       <CardList />
     </div>
   );
