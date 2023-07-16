@@ -2,4 +2,9 @@
   display: block;
   margin: auto;
   max-width: 200px;
+  transition: 500ms;
+}
+
+.card-item img:hover {
+  max-width: 400px;
 }
