@@ -64,6 +64,10 @@
   cursor: pointer;
 }
 
+.select-dropdown {
+  margin: auto;
+  width: 85%;
+}
 
 /* Style page content */
 .main {

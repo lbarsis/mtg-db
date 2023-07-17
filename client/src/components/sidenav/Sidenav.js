@@ -33,30 +33,12 @@ function Sidenav() {
     const { name, cardTypes } = formData
 
     const cardTypeValues = cardTypes.map(cardType => cardType.value)
-    let url = `https://api.scryfall.com/cards/search?q=${name}}`
-
-    // switch (name === '') {
-    //   case name === '' && cardTypes.length > 0:
-    //     url = `https://api.scryfall.com/cards/search?q=t:${cardTypeValues.join('&t:')}}`
-
-    // }
-
-    if (name.length === 0 && cardTypes.length > 0) {
-      // url = `https://api.scryfall.com/cards/search?q=t:${cardTypeValues.join('+t:')}}`
-      url = `https://api.scryfall.com/cards/search?q=t:${cardTypeValues.join('+t:')}`
-    } else if (name.length > 0 && cardTypes.length > 0) {
-      url = `https://api.scryfall.com/cards/search?q=${name}+t:${cardTypeValues.join('+t:')}`
-    }
-    
-    else {
-      url = `https://api.scryfall.com/cards/search?q=${name}`
-    }
+    let url = `https://api.scryfall.com/cards/search?q=${name} t:${cardTypeValues.join('+t:')}`
 
     fetch(url)
       .then(r => r.json())
       .then(result => setCards(result.data))
   }
-
 
   const options = [
     { value: 'battle', label: 'Battle' },
@@ -615,7 +597,7 @@ function Sidenav() {
 
           <label>Type:</label>
           {/* <FormCardType onUpdateCardType={handleChange} setFormData={setFormData} formData={formData}/> */}
-          <Select options={options} name='cardTypes' onChange={handleCardTypesChange} isMulti />
+          <Select options={options} name='cardTypes' onChange={handleCardTypesChange} isMulti className='select-dropdown' />
 
 
           <div className='filters-button'>
