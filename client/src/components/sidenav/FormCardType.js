@@ -1,47 +1,7 @@
-import React, { useContext, useState } from 'react';
-import '../../styles/sidenav/sidenav.css'
-import { CardContext } from '../../context/cardContext';
-// import FormCardType from './FormCardType';
+import React from 'react';
 import Select from 'react-select'
 
-
-function Sidenav() {
-  const [formData, setFormData] = useState({
-    name: '',
-    cardTypes: []
-  })
-  const { cards, setCards } = useContext(CardContext)
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
-
-  const handleCardTypesChange = (data) => {
-    setFormData({
-      ...formData,
-      cardTypes: [...formData.cardTypes, data.slice(-1)[0]]
-    })
-  }
-
-  // console.log(formData)
-
-  const searchCards = (e) => {
-    e.preventDefault(e)
-    const { name, cardTypes } = formData
-
-    const cardTypeValues = cardTypes.map(cardType => cardType.value)
-
-    const url = `https://api.scryfall.com/cards/search?q=${name}}`
-
-
-    fetch(url)
-      .then(r => r.json())
-      .then(result => setCards(result.data))
-  }
-
+function FormCardType({ onUpdateCardType, formData }) {
 
   const options = [
     { value: 'battle', label: 'Battle' },
@@ -585,31 +545,15 @@ function Sidenav() {
     { value: 'zhalfir', label: 'Zhalfir' }
   ]
 
+  // console.log()
+
   return (
     <div>
-      <div className="sidenav">
-        <form className='filter-form' onSubmit={searchCards}>
-          <label>Name:</label>
-          <input
-            name='name'
-            type='text'
-            placeholder='Type anything...'
-            onChange={handleChange}
-            value={formData.name}
-          />
-
-          <label>Type:</label>
-          {/* <FormCardType onUpdateCardType={handleChange} setFormData={setFormData} formData={formData}/> */}
-          <Select options={options} name='cardTypes' onChange={handleCardTypesChange} value={formData.cardTypes} isMulti />
-
-
-          <div className='filters-button'>
-            <button type='submit'>Search</button>
-          </div>
-        </form>
-      </div>
+      {/* <Select options={options} onChange={onUpdateCardType} value={formData.cardType}  isMulti/> */}
+      
+      <Select options={options} isMulti/>
     </div>
   );
 }
 
-export default Sidenav;
+export default FormCardType;
