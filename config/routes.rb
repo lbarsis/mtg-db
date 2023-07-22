@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :wishlist_cards
+  resources :deck_cards
+  resources :wishlists
+  resources :collection_cards
+  resources :decks
+  resources :cards
 
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'

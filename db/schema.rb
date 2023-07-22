@@ -10,9 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_15_203927) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_22_164141) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "hstore"
   enable_extension "plpgsql"
+
+  create_table "cards", force: :cascade do |t|
+    t.hstore "card_data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "collection_cards", force: :cascade do |t|
+    t.bigint "users_id", null: false
+    t.bigint "cards_id", null: false
+    t.integer "total_quantity"
+    t.integer "available_quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cards_id"], name: "index_collection_cards_on_cards_id"
+    t.index ["users_id"], name: "index_collection_cards_on_users_id"
+  end
+
+  create_table "deck_cards", force: :cascade do |t|
+    t.bigint "decks_id", null: false
+    t.bigint "cards_id", null: false
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cards_id"], name: "index_deck_cards_on_cards_id"
+    t.index ["decks_id"], name: "index_deck_cards_on_decks_id"
+  end
+
+  create_table "decks", force: :cascade do |t|
+    t.bigint "users_id", null: false
+    t.string "deck_name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["users_id"], name: "index_decks_on_users_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
@@ -21,4 +58,31 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_15_203927) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "wishlist_cards", force: :cascade do |t|
+    t.bigint "wishlists_id", null: false
+    t.bigint "cards_id", null: false
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cards_id"], name: "index_wishlist_cards_on_cards_id"
+    t.index ["wishlists_id"], name: "index_wishlist_cards_on_wishlists_id"
+  end
+
+  create_table "wishlists", force: :cascade do |t|
+    t.bigint "users_id", null: false
+    t.string "wishlist_name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["users_id"], name: "index_wishlists_on_users_id"
+  end
+
+  add_foreign_key "collection_cards", "cards", column: "cards_id"
+  add_foreign_key "collection_cards", "users", column: "users_id"
+  add_foreign_key "deck_cards", "cards", column: "cards_id"
+  add_foreign_key "deck_cards", "decks", column: "decks_id"
+  add_foreign_key "decks", "users", column: "users_id"
+  add_foreign_key "wishlist_cards", "cards", column: "cards_id"
+  add_foreign_key "wishlist_cards", "wishlists", column: "wishlists_id"
+  add_foreign_key "wishlists", "users", column: "users_id"
 end
