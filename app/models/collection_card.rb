@@ -1,4 +1,4 @@
 class CollectionCard < ApplicationRecord
-  belongs_to :users
-  belongs_to :cards
+  belongs_to :user
+  belongs_to :card
 end
