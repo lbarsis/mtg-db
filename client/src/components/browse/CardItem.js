@@ -48,10 +48,12 @@ function CardItem({ card }) {
                 <button className='card-details-button'>Add to Wishlist</button>
               </div>
               <span>
-                {card.name} {displayManaSymbols}
+                <p id='card-title'>{card.name} {displayManaSymbols}</p>
+                <p id='card-rarity'>{card.rarity}</p>
               </span>
               <div>
-                {card.type_line}
+                <p id='card-type'>{card.type_line}</p>
+                <p id='card-text'>{card.oracle_text}</p>
               </div>
             </div>
           </div>
