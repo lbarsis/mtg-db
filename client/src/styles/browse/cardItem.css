@@ -23,8 +23,8 @@
 
 .card-details {
   margin-right: 25px;
-  max-width: 800px;
-  height: 700px;
+  max-width: 1000px;
+  height: 800px;
   padding: 20px;
   color: rgba(191, 191, 191, 1);
   font-size: 25px;
@@ -71,4 +71,64 @@
 #card-text {
   margin: 0 15px 15px 15px;
   font-size: 15px;
+}
+
+/* Deck and wishlist dropdown menus */
+/* Style The Dropdown Button */
+.dropbtn {
+  display: block;
+  border: none;
+  margin: auto;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin: 0 15px;
+  max-width: 200px;
+  background-color: transparent;
+  border: none;
+  box-shadow: 0px 0px 10px 0px rgb(174, 174, 174);
+  border-radius: 10px;
+  width: 100%;
+  margin:10px;
+  padding: 5px 0px;
+  cursor: pointer;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  border-radius: 10px;
+  margin: 0;
+  background-color: #f9f9f9;
+  width: 100%;
+  box-shadow: 0px 0px 10px 0px rgb(174, 174, 174);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+  border-radius: 10px;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: rgba(239, 239, 240, 1);
 }

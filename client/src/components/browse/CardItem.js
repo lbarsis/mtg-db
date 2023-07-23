@@ -44,8 +44,30 @@ function CardItem({ card }) {
             <div className='card-details'>
               <div>
                 <button className='card-details-button' onClick={handleAddCardToCollection}>Add to Collection</button>
-                <button className='card-details-button'>Add to Deck</button>
-                <button className='card-details-button'>Add to Wishlist</button>
+
+                {/* Deck Dropdown */}
+                <div className="dropdown">
+                  <button className="dropbtn">Add To Deck</button>
+                  <div className="dropdown-content">
+                    <a href="#">Deck 1</a>
+                    <a href="#">Deck 2</a>
+                    <a href="#">Deck 3</a>
+                    
+                    <a href="#">Create New Deck</a>
+                  </div>
+                </div>
+
+                {/* Wishlist Dropdown */}
+                <div className="dropdown">
+                  <button className="dropbtn">Dropdown</button>
+                  <div className="dropdown-content">
+                    <a href="#">Wishlist 1</a>
+                    <a href="#">Wishlist 2</a>
+                    <a href="#">Wishlist 3</a>
+
+                    <a href="#">Create New Wishlist</a>
+                  </div>
+                </div>
               </div>
               <span>
                 <p id='card-title'>{card.name} {displayManaSymbols}</p>
