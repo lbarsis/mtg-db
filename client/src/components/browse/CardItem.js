@@ -7,10 +7,6 @@ function CardItem({ card }) {
   const [isCardActive, setIsCardActive] = useState(false)
   const { manaTypes } = useContext(CardContext)
 
-  const handleChangeCardDisplay = () => {
-    setIsCardActive(isCardActive => !isCardActive)
-  }
-
   const handleAddCardToCollection = () => {
     fetch('/add_card_to_collection', {
       method: 'POST',
@@ -28,57 +24,68 @@ function CardItem({ card }) {
       })
   }
 
+  const handleIsCardActiveChange = (e) => {
+    e.target.id === "hide-card" ? setIsCardActive(false) : setIsCardActive(true)
+  }
+
   const manaSymbols = card.mana_cost?.match(/{.*?}/g);
   const displayManaSymbols = manaSymbols?.map(manaSymbol => {
     const match = manaTypes.find(manaType => manaType.symbol === manaSymbol)
     return match ? <img key={uuidv4()} src={match.svg_uri} alt='mana-cost' className='mana-cost' /> : null
   })
 
+  // console.log(isCardActive)
+
   return (
-    <div className='card-item' onClick={handleChangeCardDisplay}>
+    <div className='card-item' id='show-card' onClick={handleIsCardActiveChange}>
+      {/* <button onClick={() => setIsCardActive(false)}>X</button> */}
 
       {
         isCardActive ?
-          <div className='card-active'>
-            {card.image_uris ? <img src={card?.image_uris?.normal} alt='cardimage' /> : <img src={card?.card_faces[0]?.image_uris?.normal} alt='cardimage' />}
-            <div className='card-details'>
-              <div>
-                <button className='card-details-button' onClick={handleAddCardToCollection}>Add to Collection</button>
+          <>
+            <div className='card-active'>
+              {card.image_uris ? <img src={card?.image_uris?.normal} alt='cardimage' /> : <img src={card?.card_faces[0]?.image_uris?.normal} alt='cardimage' />}
+              <div className='card-details'>
+                <div>
+                  <button className='card-details-button' onClick={handleAddCardToCollection}>Add to Collection</button>
 
-                {/* Deck Dropdown */}
-                <div className="dropdown">
-                  <button className="dropbtn">Add To Deck</button>
-                  <div className="dropdown-content">
-                    <a href="#">Deck 1</a>
-                    <a href="#">Deck 2</a>
-                    <a href="#">Deck 3</a>
-                    
-                    <a href="#">Create New Deck</a>
+                  {/* Deck Dropdown */}
+                  <div className="dropdown">
+                    <button className="dropbtn">Add To Deck</button>
+                    <div className="dropdown-content">
+                      <a href="#">Deck 1</a>
+                      <a href="#">Deck 2</a>
+                      <a href="#">Deck 3</a>
+
+                      <a href="#">Create New Deck</a>
+                    </div>
+                  </div>
+
+                  {/* Wishlist Dropdown */}
+                  <div className="dropdown">
+                    <button className="dropbtn">Dropdown</button>
+                    <div className="dropdown-content">
+                      <a href="#">Wishlist 1</a>
+                      <a href="#">Wishlist 2</a>
+                      <a href="#">Wishlist 3</a>
+
+                      <a href="#">Create New Wishlist</a>
+                    </div>
                   </div>
                 </div>
-
-                {/* Wishlist Dropdown */}
-                <div className="dropdown">
-                  <button className="dropbtn">Dropdown</button>
-                  <div className="dropdown-content">
-                    <a href="#">Wishlist 1</a>
-                    <a href="#">Wishlist 2</a>
-                    <a href="#">Wishlist 3</a>
-
-                    <a href="#">Create New Wishlist</a>
-                  </div>
+                <span>
+                  <p id='card-title'>{card.name} {displayManaSymbols}</p>
+                  <p id='card-rarity'>{card.rarity}</p>
+                </span>
+                <div>
+                  <p id='card-type'>{card.type_line}</p>
+                  <p id='card-text'>{card.oracle_text}</p>
                 </div>
+
               </div>
-              <span>
-                <p id='card-title'>{card.name} {displayManaSymbols}</p>
-                <p id='card-rarity'>{card.rarity}</p>
-              </span>
-              <div>
-                <p id='card-type'>{card.type_line}</p>
-                <p id='card-text'>{card.oracle_text}</p>
-              </div>
+              <button id='hide-card' onClick={handleIsCardActiveChange}>X</button>
             </div>
-          </div>
+          </>
           :
           <>
             <button className='card-button' onClick={handleAddCardToCollection}>Add to Collection</button>
@@ -87,6 +94,7 @@ function CardItem({ card }) {
             {card.image_uris ? <img src={card?.image_uris?.normal} alt='cardimage' /> : <img src={card?.card_faces[0]?.image_uris?.normal} alt='cardimage' />}
           </>
       }
+
     </div>
   );
 }
