@@ -42,7 +42,7 @@ function CardItem({ card }) {
 
       {
         isCardActive ?
-          <>
+          <div className='card-background'>
             <div className='card-active'>
               {card.image_uris ? <img src={card?.image_uris?.normal} alt='cardimage' /> : <img src={card?.card_faces[0]?.image_uris?.normal} alt='cardimage' />}
               <div className='card-details'>
@@ -63,7 +63,7 @@ function CardItem({ card }) {
 
                   {/* Wishlist Dropdown */}
                   <div className="dropdown">
-                    <button className="dropbtn">Dropdown</button>
+                    <button className="dropbtn">Wishlist</button>
                     <div className="dropdown-content">
                       <a href="#">Wishlist 1</a>
                       <a href="#">Wishlist 2</a>
@@ -72,6 +72,8 @@ function CardItem({ card }) {
                       <a href="#">Create New Wishlist</a>
                     </div>
                   </div>
+
+                  <button id='hide-card' onClick={handleIsCardActiveChange}>X</button>
                 </div>
                 <span>
                   <p id='card-title'>{card.name} {displayManaSymbols}</p>
@@ -83,9 +85,8 @@ function CardItem({ card }) {
                 </div>
 
               </div>
-              <button id='hide-card' onClick={handleIsCardActiveChange}>X</button>
             </div>
-          </>
+          </div>
           :
           <>
             <button className='card-button' onClick={handleAddCardToCollection}>Add to Collection</button>
