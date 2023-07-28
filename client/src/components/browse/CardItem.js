@@ -2,10 +2,13 @@ import React, { useState, useContext } from 'react';
 import '../../styles/browse/cardItem.css'
 import { CardContext } from '../../context/cardContext';
 import { v4 as uuidv4 } from 'uuid';
+import { DeckContext } from '../../context/deckContext';
 
 function CardItem({ card }) {
   const [isCardActive, setIsCardActive] = useState(false)
   const { manaTypes } = useContext(CardContext)
+  
+  const { handleAddDeck } = useContext(DeckContext)
 
   const handleAddCardToCollection = () => {
     fetch('/add_card_to_collection', {
@@ -53,7 +56,7 @@ function CardItem({ card }) {
                   <div className="dropdown">
                     <button className="dropbtn">Add To Deck</button>
                     <div className="dropdown-content">
-                      <button >Create New Deck</button>
+                      <button onClick={handleAddDeck}>Create New Deck</button>
                     </div>
                   </div>
 

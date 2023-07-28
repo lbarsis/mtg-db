@@ -7,12 +7,14 @@ import Login from './users/Login';
 import Signup from './users/Signup';
 import Browse from './browse/Browse';
 import { CardProvider } from '../context/cardContext';
+import { DeckProvider } from '../context/deckContext';
 
 function App() {
   return (
     <div className="App">
       <UserProvider>
         <CardProvider>
+          <DeckProvider>
 
           <Navbar />
           <Routes>
@@ -21,7 +23,8 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/signup' element={<Signup />} />
           </Routes>
-
+          
+          </DeckProvider>
         </CardProvider>
       </UserProvider>
     </div>
