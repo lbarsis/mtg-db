@@ -53,11 +53,7 @@ function CardItem({ card }) {
                   <div className="dropdown">
                     <button className="dropbtn">Add To Deck</button>
                     <div className="dropdown-content">
-                      <a href="#">Deck 1</a>
-                      <a href="#">Deck 2</a>
-                      <a href="#">Deck 3</a>
-
-                      <a href="#">Create New Deck</a>
+                      <button >Create New Deck</button>
                     </div>
                   </div>
 
