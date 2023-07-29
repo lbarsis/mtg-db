@@ -67,17 +67,14 @@ function CardItem({ card }) {
                     </div>
                   </div>
 
-                  {/* Wishlist Dropdown
+                  {/* Wishlist Dropdown */}
                   <div className="dropdown">
                     <button className="dropbtn">Wishlist</button>
                     <div className="dropdown-content">
-                      <a href="#">Wishlist 1</a>
-                      <a href="#">Wishlist 2</a>
-                      <a href="#">Wishlist 3</a>
-
-                      <a href="#">Create New Wishlist</a>
+                      {/* {displayAddToDeckDropdownSelectors} */}
+                      <button onClick={handleAddDeck}>Create New Wishlist</button>
                     </div>
-                  </div> */}
+                  </div>
 
                   <button id='hide-card' onClick={handleIsCardActiveChange}>X</button>
                 </div>
