@@ -26,14 +26,14 @@ class DeckCardsController < ApplicationController
   private
 
   def deck_cards_params
-    params.permit(:deck_id)
+    params.permit(:card, :deck_id)
   end
 
   def add_card_to_collection(card)
     collection_card = @current_user.collection_cards.find_by(card_id: card.id)
 
     if collection_card
-      collection_card.available_quantity -= 1  
+      collection_card.total_quantity += 1
       collection_card.save 
     else
       CollectionCard.create!(user: @current_user, card: card, total_quantity: 1, available_quantity: 0)
