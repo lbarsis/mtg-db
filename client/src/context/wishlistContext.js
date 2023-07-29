@@ -14,7 +14,7 @@ function WishlistProvider({ children }) {
           r.json().then(errors => console.log(errors))
         }
       })
-  }, [wishlists])
+  }, [])
 
   const handleAddWishlist = () => {
     fetch('/wishlists', {

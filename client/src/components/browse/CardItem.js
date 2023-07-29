@@ -3,11 +3,13 @@ import '../../styles/browse/cardItem.css'
 import { CardContext } from '../../context/cardContext';
 import { v4 as uuidv4 } from 'uuid';
 import { DeckContext } from '../../context/deckContext';
+import { WishlistContext } from '../../context/wishlistContext';
 
 function CardItem({ card }) {
   const [isCardActive, setIsCardActive] = useState(false)
   const { manaTypes } = useContext(CardContext)
   const { handleAddDeck, decks, handleAddCardToDeck } = useContext(DeckContext)
+  const { handleAddWishlist, wishlists, handleAddCardToWishlist } = useContext(WishlistContext)
 
   const handleAddCardToCollection = () => {
     fetch('/add_card_to_collection', {
@@ -31,6 +33,11 @@ function CardItem({ card }) {
   // Add to Deck Dropdown Options
   const displayAddToDeckDropdownSelectors = decks.map(deck => {
     return <button key={deck.id} onClick={() => handleAddCardToDeck(card, deck)}>{deck.deck_name}</button>
+  })
+
+  // Add to Wishlist Dropdown Options
+  const displayAddToWishlistDropdownSelectors = wishlists.map(wishlist => {
+    return <button key={wishlist.id} onClick={() => handleAddCardToWishlist(card, wishlist)}>{wishlist.wishlist_name}</button>
   })
 
   const handleIsCardActiveChange = (e) => {
@@ -71,8 +78,8 @@ function CardItem({ card }) {
                   <div className="dropdown">
                     <button className="dropbtn">Wishlist</button>
                     <div className="dropdown-content">
-                      {/* {displayAddToDeckDropdownSelectors} */}
-                      <button onClick={handleAddDeck}>Create New Wishlist</button>
+                      {displayAddToWishlistDropdownSelectors}
+                      <button onClick={handleAddWishlist}>Create New Wishlist</button>
                     </div>
                   </div>
 
