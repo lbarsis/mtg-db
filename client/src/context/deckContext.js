@@ -14,7 +14,7 @@ function DeckProvider({ children }) {
           r.json().then(errors => console.log(errors))
         }
       })
-  })
+  }, [])
 
   const handleAddDeck = () => {
     fetch('/decks', {
@@ -30,8 +30,27 @@ function DeckProvider({ children }) {
       })
   }
 
+  const handleAddCardToDeck = (card, deck) => {
+    // console.log(card)
+    fetch('/deck_cards', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        card: card,
+        deck_id: deck.id
+      })
+    })
+    .then(r => {
+      if (r.ok) {
+        r.json().then(data => console.log(data))
+      } else {
+        r.json().then(errors => console.log(errors))
+      }
+    })
+  }
+
   return (
-    <DeckContext.Provider value={{ decks, setDecks, handleAddDeck }}>
+    <DeckContext.Provider value={{ decks, setDecks, handleAddDeck, handleAddCardToDeck }}>
       {children}
     </DeckContext.Provider>
   );

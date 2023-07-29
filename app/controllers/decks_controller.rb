@@ -5,13 +5,14 @@ class DecksController < ApplicationController
   end
 
   def create
-    deck = @current_user.decks.create!(deck_name: "New Deck #{@current_user.decks.length + 1}")
+    deck = @current_user.decks.create!(deck_params)
     render json: deck, status: :ok
   end
+  
 
   private
 
   def deck_params
-    params.permit(:deck_name, :description)
+    params.permit(:deck_name, :description).merge(deck_name: "New Deck #{@current_user.decks.length + 1}")
   end
 end

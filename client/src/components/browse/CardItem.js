@@ -7,8 +7,7 @@ import { DeckContext } from '../../context/deckContext';
 function CardItem({ card }) {
   const [isCardActive, setIsCardActive] = useState(false)
   const { manaTypes } = useContext(CardContext)
-  
-  const { handleAddDeck } = useContext(DeckContext)
+  const { handleAddDeck, decks, handleAddCardToDeck } = useContext(DeckContext)
 
   const handleAddCardToCollection = () => {
     fetch('/add_card_to_collection', {
@@ -26,6 +25,13 @@ function CardItem({ card }) {
         }
       })
   }
+
+  // console.log(decks)
+
+  // Add to Deck Dropdown Options
+  const displayAddToDeckDropdownSelectors = decks.map(deck => {
+    return <button key={deck.id} onClick={() => handleAddCardToDeck(card, deck)}>{deck.deck_name}</button>
+  })
 
   const handleIsCardActiveChange = (e) => {
     e.target.id === "hide-card" ? setIsCardActive(false) : setIsCardActive(true)
@@ -56,11 +62,12 @@ function CardItem({ card }) {
                   <div className="dropdown">
                     <button className="dropbtn">Add To Deck</button>
                     <div className="dropdown-content">
+                      {displayAddToDeckDropdownSelectors}
                       <button onClick={handleAddDeck}>Create New Deck</button>
                     </div>
                   </div>
 
-                  {/* Wishlist Dropdown */}
+                  {/* Wishlist Dropdown
                   <div className="dropdown">
                     <button className="dropbtn">Wishlist</button>
                     <div className="dropdown-content">
@@ -70,7 +77,7 @@ function CardItem({ card }) {
 
                       <a href="#">Create New Wishlist</a>
                     </div>
-                  </div>
+                  </div> */}
 
                   <button id='hide-card' onClick={handleIsCardActiveChange}>X</button>
                 </div>
