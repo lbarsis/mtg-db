@@ -10,6 +10,8 @@ gem 'bcrypt', '~> 3.1', '>= 3.1.12'
 
 gem 'faker', '~> 3.2'
 
+gem 'active_model_serializers'
+
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 

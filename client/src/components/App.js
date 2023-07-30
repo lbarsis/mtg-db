@@ -9,6 +9,7 @@ import Browse from './browse/Browse';
 import { CardProvider } from '../context/cardContext';
 import { DeckProvider } from '../context/deckContext';
 import { WishlistProvider } from '../context/wishlistContext';
+import { CollectionCardProvider } from '../context/collectionCardContext';
 
 function App() {
   return (
@@ -17,15 +18,17 @@ function App() {
         <CardProvider>
           <DeckProvider>
             <WishlistProvider>
+              <CollectionCardProvider>
 
-              <Navbar />
-              <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='/browse' element={<Browse />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/signup' element={<Signup />} />
-              </Routes>
-
+                <Navbar />
+                <Routes>
+                  <Route path='/' element={<Home />} />
+                  <Route path='/browse' element={<Browse />} />
+                  <Route path='/login' element={<Login />} />
+                  <Route path='/signup' element={<Signup />} />
+                </Routes>
+                
+              </CollectionCardProvider>
             </WishlistProvider>
           </DeckProvider>
         </CardProvider>
