@@ -1,0 +1,7 @@
+.deck-list {
+  display: grid;
+  width: auto;
+  margin: 25px auto;
+  grid-template-columns: repeat(5, auto);
+  color: red;
+}
