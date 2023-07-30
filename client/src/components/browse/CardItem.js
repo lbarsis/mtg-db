@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import '../../styles/browse/cardItem.css'
 import { CardContext } from '../../context/cardContext';
 import { v4 as uuidv4 } from 'uuid';
@@ -8,8 +8,31 @@ import { WishlistContext } from '../../context/wishlistContext';
 function CardItem({ card }) {
   const [isCardActive, setIsCardActive] = useState(false)
   const { manaTypes } = useContext(CardContext)
-  const { handleAddDeck, decks, handleAddCardToDeck } = useContext(DeckContext)
-  const { handleAddWishlist, wishlists, handleAddCardToWishlist } = useContext(WishlistContext)
+  const { handleAddDeck, decks, setDecks, handleAddCardToDeck } = useContext(DeckContext)
+  const { handleAddWishlist, wishlists, setWishlists, handleAddCardToWishlist } = useContext(WishlistContext)
+
+  useEffect(() => {
+    fetch('/decks')
+      .then(r => {
+        if (r.ok) {
+          r.json().then(decks => setDecks(decks))
+        } else {
+          r.json().then(errors => console.log(errors))
+        }
+      })
+  }, [setDecks])
+
+  
+  useEffect(() => {
+    fetch('/wishlists')
+      .then(r => {
+        if (r.ok) {
+          r.json().then(wishlists => setWishlists(wishlists))
+        } else {
+          r.json().then(errors => console.log(errors))
+        }
+      })
+  }, [setWishlists])
 
   const handleAddCardToCollection = () => {
     fetch('/add_card_to_collection', {

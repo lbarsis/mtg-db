@@ -1,0 +1,8 @@
+.category-container {
+  display: block;
+  margin: 50px auto; 
+  padding: 25px;
+  max-width: 1150px;
+  height: fit-content;
+  border: 1px solid black;
+}
