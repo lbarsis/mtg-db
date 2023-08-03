@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import '../../styles/browse/cardItem.css'
 import { CardContext } from '../../context/cardContext';
 import { v4 as uuidv4 } from 'uuid';
@@ -7,31 +7,8 @@ import { WishlistContext } from '../../context/wishlistContext';
 
 function CardDetails({ card, setIsCardActive }) {
   const { manaTypes, handleAddCardToCollection } = useContext(CardContext)
-  const { handleAddDeck, decks, setDecks, handleAddCardToDeck } = useContext(DeckContext)
-  const { handleAddWishlist, wishlists, setWishlists, handleAddCardToWishlist } = useContext(WishlistContext)
-
-  useEffect(() => {
-    fetch('/decks')
-      .then(r => {
-        if (r.ok) {
-          r.json().then(decks => setDecks(decks))
-        } else {
-          r.json().then(errors => console.log(errors))
-        }
-      })
-  }, [setDecks])
-
-  
-  useEffect(() => {
-    fetch('/wishlists')
-      .then(r => {
-        if (r.ok) {
-          r.json().then(wishlists => setWishlists(wishlists))
-        } else {
-          r.json().then(errors => console.log(errors))
-        }
-      })
-  }, [setWishlists])
+  const { handleAddDeck, decks, handleAddCardToDeck } = useContext(DeckContext)
+  const { handleAddWishlist, wishlists, handleAddCardToWishlist } = useContext(WishlistContext)
 
   // console.log(decks)
 
@@ -61,7 +38,7 @@ function CardDetails({ card, setIsCardActive }) {
       {card.image_uris ? <img src={card?.image_uris?.normal} alt='cardimage' /> : <img src={card?.card_faces[0]?.image_uris?.normal} alt='cardimage' />}
       <div className='card-details'>
         <div>
-          <button className='card-details-button' onClick={handleAddCardToCollection}>Add to Collection</button>
+          <button className='card-details-button' onClick={() => handleAddCardToCollection(card)}>Add to Collection</button>
 
           {/* Deck Dropdown */}
           <div className="dropdown">

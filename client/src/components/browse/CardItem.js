@@ -1,23 +1,30 @@
 import React, { useState, useContext, useEffect } from 'react';
 import '../../styles/browse/cardItem.css'
+import { CardContext } from '../../context/cardContext';
+import { v4 as uuidv4 } from 'uuid';
+import { DeckContext } from '../../context/deckContext';
+import { WishlistContext } from '../../context/wishlistContext';
 import CardDetails from './CardDetails';
+import { CollectionCardContext } from '../../context/collectionCardContext';
 
 function CardItem({ card }) {
   const [isCardActive, setIsCardActive] = useState(false)
+  const {handleAddCardToCollection} = useContext(CardContext)
 
-  const handleIsCardActiveChange = (e) => {
+   const handleIsCardActiveChange = (e) => {
     e.target.id === "hide-card" ? setIsCardActive(false) : setIsCardActive(true)
   }
 
   return (
     <div className='card-item' id='show-card' onClick={handleIsCardActiveChange}>
-      {/* <button onClick={() => setIsCardActive(false)}>X</button> */}
-
       {
         isCardActive ?
           <CardDetails card={card} setIsCardActive={setIsCardActive}/>
           :
           <>
+            <button className='card-button' onClick={handleAddCardToCollection}>Add to Collection</button>
+            {/* <button className='card-button'>Add to Deck</button>
+            <button className='card-button'>Add to Wishlist</button> */}
             {card.image_uris ? <img src={card?.image_uris?.normal} alt='cardimage' /> : <img src={card?.card_faces[0]?.image_uris?.normal} alt='cardimage' />}
           </>
       }
