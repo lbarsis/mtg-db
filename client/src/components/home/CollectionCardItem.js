@@ -26,9 +26,6 @@ function CollectionCardItem({ card }) {
     e.target.id === "hide-card" ? setIsCardActive(false) : setIsCardActive(true)
   }
 
-  // console.log(isCardActive)
-  console.log(card)
-
   return (
     <div className='card-item' id='show-card' onClick={handleIsCardActiveChange}>
 
