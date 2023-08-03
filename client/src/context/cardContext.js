@@ -39,8 +39,25 @@ const CardProvider = ({ children }) => {
     });
   }
  
+  const handleAddCardToCollection = (card) => {
+    fetch('/add_card_to_collection', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        card_data: card
+      })
+    })
+      .then(r => {
+        if (r.ok) {
+          r.json().then(data => console.log(data))
+        } else {
+          r.json().then(errors => console.log(errors))
+        }
+      })
+  }
+
   return (
-    <CardContext.Provider value={ {cards, setCards, result, setResult, nextPage, manaTypes, setManaTypes}}>
+    <CardContext.Provider value={ {cards, setCards, result, setResult, nextPage, manaTypes, setManaTypes, handleAddCardToCollection}}>
       {children}
     </CardContext.Provider>
   )
