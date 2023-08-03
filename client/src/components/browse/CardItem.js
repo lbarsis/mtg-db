@@ -1,11 +1,7 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import '../../styles/browse/cardItem.css'
 import { CardContext } from '../../context/cardContext';
-import { v4 as uuidv4 } from 'uuid';
-import { DeckContext } from '../../context/deckContext';
-import { WishlistContext } from '../../context/wishlistContext';
 import CardDetails from './CardDetails';
-import { CollectionCardContext } from '../../context/collectionCardContext';
 
 function CardItem({ card }) {
   const [isCardActive, setIsCardActive] = useState(false)

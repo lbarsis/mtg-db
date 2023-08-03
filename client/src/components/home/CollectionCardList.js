@@ -5,7 +5,6 @@ import CollectionCardItem from './CollectionCardItem';
 function CollectionCardList() {
   const { collectionCards, setCollectionCards } = useContext(CollectionCardContext)
 
-  
   useEffect(() => {
     fetch("/collection_cards").then((r) => {
       if (r.ok) {
@@ -19,7 +18,7 @@ function CollectionCardList() {
 
 
   const displayCards = collectionCards.map(card => {
-    return <CollectionCardItem card={card.card.card_data} key={card.id}/>
+    return <CollectionCardItem card={card} key={card.id}/>
   })
 
   return (

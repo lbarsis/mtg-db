@@ -6,13 +6,13 @@ import CollectionCardList from './CollectionCardList';
 function Home() {
   return (
     <div>
-      {/* <div className='category-container'>
+      <div className='category-container'>
         <DeckList />
-      </div> */}
+      </div>
 
       
-      {/* <div className='category-container'>
-      </div> */}
+      <div className='category-container'>
+      </div>
 
       
       <div className='category-container'>
