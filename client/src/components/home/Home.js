@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../styles/home/home.css'
 import DeckList from './DeckList';
+import WishlistList from './WishlistList'
 import CollectionCardList from './CollectionCardList';
 
 function Home() {
@@ -12,6 +13,7 @@ function Home() {
 
       
       <div className='category-container'>
+        <WishlistList />
       </div>
 
       

@@ -13,8 +13,6 @@ function DeckCardList() {
     .then(deck => setDeck(deck))
   },[deckId, setDeck])
 
-  console.log(deck)
-
   const displayDeckCards = deck.deck_cards?.map(deck_card => {
     return <CardItem card={deck_card.card.card_data} key={deck_card.card.id}/>
   })

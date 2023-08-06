@@ -6,6 +6,7 @@ import Login from './users/Login';
 import Signup from './users/Signup';
 import Browse from './browse/Browse';
 import DeckCardList from './home/DeckCardList';
+import WishlistCardList from './home/WishlistCardList';
 
 // Hooks
 import { Routes, Route } from 'react-router-dom'
@@ -31,6 +32,7 @@ function App() {
                   <Route path='/login' element={<Login />} />
                   <Route path='/signup' element={<Signup />} />
                   <Route path='/decks/:deckId' element={<DeckCardList />} />
+                  <Route path='/wishlists/:wishlistId' element={<WishlistCardList />} />
                 </Routes>
                 
               </CollectionCardProvider>

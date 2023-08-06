@@ -2,6 +2,11 @@ class WishlistsController < ApplicationController
   def index
     wishlists = @current_user.wishlists
     render json: wishlists, status: :ok
+  end  
+  
+  def show
+    wishlist = @current_user.wishlists.find(params[:id])
+    render json: wishlist, status: :ok
   end
 
   def create

@@ -4,6 +4,7 @@ const WishlistContext = createContext(null)
 
 function WishlistProvider({ children }) {
   const [wishlists, setWishlists] = useState([])
+  const [wishlist, setWishlist] = useState({})
 
   useEffect(() => {
     fetch('/wishlists')
@@ -50,7 +51,7 @@ function WishlistProvider({ children }) {
   }
 
   return (
-    <WishlistContext.Provider value={{ wishlists, setWishlists, handleAddWishlist, handleAddCardToWishlist }}>
+    <WishlistContext.Provider value={{ wishlists, setWishlists, handleAddWishlist, handleAddCardToWishlist, wishlist, setWishlist }}>
       {children}
     </WishlistContext.Provider>
   );
