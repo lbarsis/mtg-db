@@ -1,9 +1,11 @@
 import React from 'react';
 
 function DeckItem({ deck }) {
+  const { id, deck_name } = deck
+
   return (
     <div>
-      <p>{deck.deck_name}</p>
+      <a href={`/decks/${id}`}>{deck_name}</a>
     </div>
   );
 }

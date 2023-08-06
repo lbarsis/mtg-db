@@ -4,6 +4,7 @@ const DeckContext = createContext(null)
 
 function DeckProvider({ children }) {
   const [decks, setDecks] = useState([])
+  const [deck, setDeck] = useState({})
   
   useEffect(() => {
     fetch('/decks')
@@ -49,8 +50,14 @@ function DeckProvider({ children }) {
     })
   }
 
+  const handleNavigateToDeck = (deck) => {
+    fetch(`/decks/${deck.id}`)
+    .then(r => r.json())
+    .then(deck => console.log(deck))
+  }
+
   return (
-    <DeckContext.Provider value={{ decks, setDecks, handleAddDeck, handleAddCardToDeck }}>
+    <DeckContext.Provider value={{ decks, setDecks, handleAddDeck, handleAddCardToDeck, handleNavigateToDeck, deck, setDeck }}>
       {children}
     </DeckContext.Provider>
   );

@@ -4,6 +4,11 @@ class DecksController < ApplicationController
     render json: decks, status: :ok
   end
 
+  def show
+    deck = @current_user.decks.find(params[:id])
+    render json: deck, status: :ok
+  end
+
   def create
     deck = @current_user.decks.create!(deck_params)
     render json: deck, status: :ok
