@@ -8,7 +8,7 @@ function CardItem({ card }) {
   const {handleAddCardToCollection} = useContext(CardContext)
 
    const handleIsCardActiveChange = (e) => {
-    e.target.id === "hide-card" ? setIsCardActive(false) : setIsCardActive(true)
+    e.target.id === "hide-card" || e.target.id === "add-to-collection" ? setIsCardActive(false) : setIsCardActive(true)
   }
 
   return (
@@ -18,7 +18,7 @@ function CardItem({ card }) {
           <CardDetails card={card} setIsCardActive={setIsCardActive}/>
           :
           <>
-            <button className='card-button' onClick={handleAddCardToCollection}>Add to Collection</button>
+            <button className='card-button' id='add-to-collection' onClick={() => handleAddCardToCollection(card)}>Add to Collection</button>
             {/* <button className='card-button'>Add to Deck</button>
             <button className='card-button'>Add to Wishlist</button> */}
             {card.image_uris ? <img src={card?.image_uris?.normal} alt='cardimage' /> : <img src={card?.card_faces[0]?.image_uris?.normal} alt='cardimage' />}
