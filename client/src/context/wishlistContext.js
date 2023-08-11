@@ -1,21 +1,10 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 
 const WishlistContext = createContext(null)
 
 function WishlistProvider({ children }) {
   const [wishlists, setWishlists] = useState([])
   const [wishlist, setWishlist] = useState({})
-
-  useEffect(() => {
-    fetch('/wishlists')
-      .then(r => {
-        if (r.ok) {
-          r.json().then(wishlists => setWishlists(wishlists))
-        } else {
-          r.json().then(errors => console.log(errors))
-        }
-      })
-  }, [])
 
   const handleAddWishlist = () => {
     fetch('/wishlists', {

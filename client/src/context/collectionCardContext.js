@@ -27,23 +27,6 @@ const CollectionCardProvider = ({ children }) => {
       } 
     });
   }
-
-  // const handleAddCardToCollection = (card) => {
-  //   fetch('/add_card_to_collection', {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify({
-  //       card_data: card
-  //     })
-  //   })
-  //     .then(r => {
-  //       if (r.ok) {
-  //         r.json().then(data => console.log(data))
-  //       } else {
-  //         r.json().then(errors => console.log(errors))
-  //       }
-  //     })
-  // }
  
   return (
     <CollectionCardContext.Provider value={ {collectionCards, setCollectionCards, result, setResult, nextPage, manaTypes, setManaTypes }}>

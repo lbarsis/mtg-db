@@ -1,21 +1,10 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 
 const DeckContext = createContext(null)
 
 function DeckProvider({ children }) {
   const [decks, setDecks] = useState([])
   const [deck, setDeck] = useState({})
-  
-  useEffect(() => {
-    fetch('/decks')
-      .then(r => {
-        if (r.ok) {
-          r.json().then(decks => setDecks(decks))
-        } else {
-          r.json().then(errors => console.log(errors))
-        }
-      })
-  }, [])
 
   const handleAddDeck = () => {
     fetch('/decks', {
