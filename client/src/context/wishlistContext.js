@@ -13,11 +13,23 @@ function WishlistProvider({ children }) {
     })
       .then(r => {
         if (r.ok) {
-          r.json().then(data => console.log(data))
+          r.json().then(wishlist => {
+            setWishlists([
+              ...wishlists,
+              wishlist
+            ])
+          })
         } else {
           r.json().then(errors => console.log(errors))
         }
       })
+  }
+
+  function handleUpdateWishlistList(newWishlist) {
+    setWishlists([
+      ...wishlists,
+      newWishlist
+    ])
   }
 
   const handleAddCardToWishlist = (card, wishlist) => {
@@ -32,7 +44,7 @@ function WishlistProvider({ children }) {
     })
     .then(r => {
       if (r.ok) {
-        r.json().then(data => console.log(data))
+        r.json().then(wishlists => console.log(wishlists))
       } else {
         r.json().then(errors => console.log(errors))
       }
@@ -40,7 +52,7 @@ function WishlistProvider({ children }) {
   }
 
   return (
-    <WishlistContext.Provider value={{ wishlists, setWishlists, handleAddWishlist, handleAddCardToWishlist, wishlist, setWishlist }}>
+    <WishlistContext.Provider value={{ wishlists, setWishlists, handleAddWishlist, handleAddCardToWishlist, wishlist, setWishlist, handleUpdateWishlistList }}>
       {children}
     </WishlistContext.Provider>
   );

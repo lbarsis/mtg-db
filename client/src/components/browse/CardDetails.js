@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import '../../styles/browse/cardItem.css'
 import { CardContext } from '../../context/cardContext';
 import { v4 as uuidv4 } from 'uuid';
@@ -7,10 +7,32 @@ import { WishlistContext } from '../../context/wishlistContext';
 
 function CardDetails({ card, setIsCardActive }) {
   const { manaTypes, handleAddCardToCollection } = useContext(CardContext)
-  const { handleAddDeck, decks, handleAddCardToDeck } = useContext(DeckContext)
-  const { handleAddWishlist, wishlists, handleAddCardToWishlist } = useContext(WishlistContext)
+  const { handleAddDeck, decks, setDecks, handleAddCardToDeck } = useContext(DeckContext)
+  const { handleAddWishlist, wishlists, handleAddCardToWishlist, setWishlists } = useContext(WishlistContext)
 
   // console.log(decks)
+   
+  useEffect(() => {
+    fetch('/wishlists')
+      .then(r => {
+        if (r.ok) {
+          r.json().then(wishlists => setWishlists(wishlists))
+        } else {
+          r.json().then(errors => console.log(errors))
+        }
+      })
+  }, [setWishlists])
+
+  useEffect(() => {
+    fetch('/decks')
+      .then(r => {
+        if (r.ok) {
+          r.json().then(decks => setDecks(decks))
+        } else {
+          r.json().then(errors => console.log(errors))
+        }
+      })
+  }, [setDecks])
 
   // Add to Deck Dropdown Options
   const displayAddToDeckDropdownSelectors = decks.map(deck => {

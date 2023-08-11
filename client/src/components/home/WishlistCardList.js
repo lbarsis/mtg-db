@@ -12,9 +12,7 @@ function WishlistCardList() {
     .then(r => r.json())
     .then(deck => setWishlist(deck))
   },[wishlistId, setWishlist])
-
-  console.log(wishlist)
-
+  
   const displayWishlistCards = wishlist.wishlist_cards?.map(wishlist_card => {
     return <CardItem card={wishlist_card.card.card_data} key={wishlist_card.card.id}/>
   })

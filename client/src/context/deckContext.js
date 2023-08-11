@@ -13,7 +13,12 @@ function DeckProvider({ children }) {
     })
       .then(r => {
         if (r.ok) {
-          r.json().then(data => console.log(data))
+          r.json().then(deck => {
+            setDecks([
+              ...decks,
+              deck
+            ])
+          })
         } else {
           r.json().then(errors => console.log(errors))
         }
