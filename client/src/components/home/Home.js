@@ -7,17 +7,17 @@ import CollectionCardList from './CollectionCardList';
 function Home() {
   return (
     <div>
-      <div className='category-container'>
+      <div className='deck-list-container'>
         <DeckList />
       </div>
 
       
-      <div className='category-container'>
+      <div className='wishlist-list-container'>
         <WishlistList />
       </div>
 
       
-      <div className='category-container'>
+      <div className='collection-container'>
         <CollectionCardList />
       </div>
     </div>
