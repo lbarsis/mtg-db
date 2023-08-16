@@ -1,4 +1,5 @@
 .card-list {
+  position: relative;
   max-width: 1600px;
   margin: 25px auto;
   display: grid;

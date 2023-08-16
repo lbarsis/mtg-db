@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+
 .card-item img {
   display: block;
   margin: auto;
@@ -31,6 +33,22 @@
   box-shadow: 0px 0px 10px 0px rgb(174, 174, 174);
   background-color: rgba(239, 239, 240, 1);
   border-radius: 10px;
+}
+
+.grid-item-container {
+  position: relative;
+}
+
+.material-symbols-rounded {
+  display: block;
+  position: absolute;
+  cursor: pointer;
+  right: 10px;
+  color: blue;
+  margin: 15px;
+  background:  rgba(239, 239, 240, .7);
+  padding: 5px;
+  border-radius: 50%;
 }
 
 .card-details img{

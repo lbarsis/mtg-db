@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import '../../styles/sidenav/sidenav.css'
 import { CardContext } from '../../context/cardContext';
-// import FormCardType from './FormCardType';
 import Select from 'react-select'
 
 
