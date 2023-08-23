@@ -18,23 +18,25 @@ function CardItem({ card }) {
           <CardDetails card={card} setIsCardActive={setIsCardActive} />
           :
           <>
-            {/* <button className='card-button' id='add-to-collection' onClick={() => handleAddCardToCollection(card)}>Add to Collection</button> */}
             <div>
-
-              {/* <button className='card-button'>Add to Deck</button>
-            <button className='card-button'>Add to Wishlist</button> */}
-
               {
                 card.image_uris ?
                   <div className='grid-item-container'>
-                    <span className="material-symbols-rounded" onClick={() => handleAddCardToCollection(card)}>
+
+                    <div
+                      className="material-symbols-rounded"
+                      onClick={() => handleAddCardToCollection(card)}>
+                      <span className="addText">Add to Collection</span>
                       library_add
-                    </span>
+                    </div>
                     <img src={card?.image_uris?.normal} alt='cardimage' />
                   </div>
                   :
                   <div className='grid-item-container'>
-                    <span className="material-symbols-rounded" onClick={() => handleAddCardToCollection(card)}>
+                    <span
+                      className="material-symbols-rounded"
+                      onClick={() => handleAddCardToCollection(card)}>
+                      <span className="addText">Add to Collection</span>
                       library_add
                     </span>
                     <img src={card?.card_faces[0]?.image_uris?.normal} alt='cardimage' />

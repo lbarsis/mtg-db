@@ -39,19 +39,42 @@
   position: relative;
 }
 
+.addText {
+  display:inline-block; /* inline-block so we can set a width */
+  height: auto;
+  margin: auto;
+  width:0;
+  text-align: center;
+  white-space:nowrap; /* keep text one line */
+  direction:rtl; /* change direction so the text overflow on the left */
+  color: rgba(255,255,255,0);
+  transition: .5s;
+  transform: translateX(20px); /* put the value you want here */
+  pointer-events:none; /* to avoid the hover on the text, remove to see the difference */
+  font-size: 15px;
+}
+
 .material-symbols-rounded {
-  display: block;
+  display: inline-block;
   position: absolute;
   cursor: pointer;
   right: 10px;
   color: blue;
-  margin: 15px;
+  margin: 10px;
+  font-size: 15px;
   background:  rgba(239, 239, 240, .7);
   padding: 5px;
-  border-radius: 50%;
+  border-radius: 10px;
+  transition: .5s;
 }
 
-.card-details img{
+.material-symbols-rounded:hover .addText {
+  color: blue;
+  width: fit-content;
+  transform: translateX(0);
+}
+
+.card-details img {
   display: inline;
   max-width: 20px;
   margin: 0 1px;
