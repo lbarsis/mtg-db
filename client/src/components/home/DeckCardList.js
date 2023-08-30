@@ -5,22 +5,29 @@ import CardItem from '../browse/CardItem';
 
 function DeckCardList() {
   const { deckId } = useParams()
-  const {deck, setDeck} = useContext(DeckContext)
+  const { deck, setDeck } = useContext(DeckContext)
 
   useEffect(() => {
     fetch(`/decks/${deckId}`)
-    .then(r => r.json())
-    .then(deck => setDeck(deck))
-  },[deckId, setDeck])
+      .then(r => r.json())
+      .then(deck => setDeck(deck))
+  }, [deckId, setDeck])
 
   const displayDeckCards = deck.deck_cards?.map(deck_card => {
-    return <CardItem card={deck_card.card.card_data} key={deck_card.card.id}/>
+    return (
+      <>
+        <CardItem card={deck_card.card.card_data} key={deck_card.card.id} />
+      </>
+    )
   })
 
   return (
-    <div className='card-list'>
-      {displayDeckCards}
-    </div>
+    <>
+      <h1>{deck.deck_name}</h1>
+      <div className='card-list'>
+        {displayDeckCards}
+      </div>
+    </>
   );
 }
 

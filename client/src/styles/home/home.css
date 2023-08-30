@@ -24,3 +24,24 @@
   height: 50vh;
   border: 1px solid black;
 }
+
+.paginate {
+  display: inline-block;
+  text-align: center;
+}
+
+.paginate li {
+  font-weight: bold;
+  font-size: 10px;
+  color: black;
+  max-width: 75%;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  list-style-type: none;
+  cursor: pointer;
+}
+
+.paginate li:active {
+  font-weight: bold;
+}

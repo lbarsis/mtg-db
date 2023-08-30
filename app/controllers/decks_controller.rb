@@ -13,7 +13,6 @@ class DecksController < ApplicationController
     deck = @current_user.decks.create!(deck_params)
     render json: deck, status: :ok
   end
-  
 
   private
 

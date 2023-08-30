@@ -50,6 +50,7 @@ function CollectionCardList() {
       </div>
       <ReactPaginate
         breakLabel="..."
+        className='paginate'
         nextLabel="next >"
         onPageChange={handlePageClick}
         pageRangeDisplayed={5}
