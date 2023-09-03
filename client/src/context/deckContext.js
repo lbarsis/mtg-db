@@ -53,7 +53,6 @@ function DeckProvider({ children }) {
         description: formData.description
       })
     })
-    .then(r => r.json()).then(deck => console.log(deck))
   } 
 
   const handleNavigateToDeck = (deck) => {
