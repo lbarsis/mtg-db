@@ -10,14 +10,19 @@ class WishlistsController < ApplicationController
   end
 
   def create
-    wishlist = @current_user.wishlists.create!(wishlist_params)
+    wishlist = @current_user.wishlists.create!(wishlist_name: "New Wishlist #{@current_user.wishlists.length + 1}")
     render json: wishlist, status: :ok
   end
   
+  def update
+    wishlist = @current_user.wishlists.find(params[:id])
+    wishlist.update!(wishlist_params)
+    render json: wishlist, status: :ok
+  end
 
   private
 
   def wishlist_params
-    params.permit(:wishlist_name, :description).merge(wishlist_name: "New Wishlist #{@current_user.wishlists.length + 1}")
+    params.permit(:id, :wishlist_name, :description)
   end
 end

@@ -10,8 +10,7 @@ class DecksController < ApplicationController
   end
 
   def create
-    deck = @current_user.decks.create!(deck_params)
-    deck.update!(deck_name:  "New Deck #{@current_user.decks.length + 1}")
+    deck = @current_user.decks.create!(deck_name:  "New Deck #{@current_user.decks.length + 1}")
     render json: deck, status: :ok
   end
 

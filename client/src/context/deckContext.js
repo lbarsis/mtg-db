@@ -44,12 +44,13 @@ function DeckProvider({ children }) {
     })
   }
 
-  const handleUpdateDeckName = (deck, deckName) => {
+  const handleUpdateDeck = (deck, formData) => {
     fetch(`/decks/${deck.id}`, {
       method: 'PATCH',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        deck_name: deckName
+        deck_name: formData.deck_name,
+        description: formData.description
       })
     })
     .then(r => r.json()).then(deck => console.log(deck))
@@ -62,7 +63,7 @@ function DeckProvider({ children }) {
   }
 
   return (
-    <DeckContext.Provider value={{ decks, setDecks, handleAddDeck, handleAddCardToDeck, handleNavigateToDeck, deck, setDeck, handleUpdateDeckName }}>
+    <DeckContext.Provider value={{ decks, setDecks, handleAddDeck, handleAddCardToDeck, handleNavigateToDeck, deck, setDeck, handleUpdateDeck }}>
       {children}
     </DeckContext.Provider>
   );
