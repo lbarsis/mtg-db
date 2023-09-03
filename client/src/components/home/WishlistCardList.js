@@ -39,18 +39,20 @@ function WishlistCardList() {
 
   return (
     <>
-      <input className='deck-title'
+      <input className='title'
         name="wishlist_name"
         onChange={handleChangeFormData}
         value={formData.wishlist_name}
         onBlur={() => handleUpdateWishlist(wishlist, formData)}
       />
-      <input className='deck-title'
+
+      <textarea className='description'
         name="description"
         onChange={handleChangeFormData}
         value={formData.description}
         onBlur={() => handleUpdateWishlist(wishlist, formData)}
       />
+
       <div className='card-list'>
         {displayWishlistCards}
       </div>
