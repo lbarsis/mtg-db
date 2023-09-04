@@ -1,6 +1,6 @@
 import React from 'react';
 // Components
-import Navbar from './navbar/Navbar';
+// import Navbar from './navbar/Navbar';
 import Home from './home/Home';
 import Login from './users/Login';
 import Signup from './users/Signup';
@@ -15,6 +15,7 @@ import { CardProvider } from '../context/cardContext';
 import { DeckProvider } from '../context/deckContext';
 import { WishlistProvider } from '../context/wishlistContext';
 import { CollectionCardProvider } from '../context/collectionCardContext';
+import NavbarComponent from './navbar/Navbar';
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
             <WishlistProvider>
               <CollectionCardProvider>
 
-                <Navbar />
+                <NavbarComponent />
                 <Routes>
                   <Route path='/' element={<Home />} />
                   <Route path='/browse' element={<Browse />} />
