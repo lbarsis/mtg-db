@@ -5,7 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown'
+// import NavDropdown from 'react-bootstrap/NavDropdown'
+import mtgLogo from './assets/MTG_Logo.svg'
 
 function NavbarComponent() {
   const navigate = useNavigate()
@@ -20,11 +21,12 @@ function NavbarComponent() {
     navigate('/')
   }
 
-
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="/">Brand</Navbar.Brand>
+        <Navbar.Brand href="/">
+          <img src={mtgLogo}  alt='logo' />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
@@ -41,7 +43,6 @@ function NavbarComponent() {
                 <Nav.Link href='/login'>Login</Nav.Link>
                 <Nav.Link href='/signup'>Signup</Nav.Link>
               </>
-
             }
           </Nav>
         </Navbar.Collapse>
