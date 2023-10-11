@@ -9,7 +9,7 @@ function Sidenav() {
     name: '',
     cardTypes: []
   })
-  const { cards, setCards } = useContext(CardContext)
+  const { setCards } = useContext(CardContext)
 
   const handleChange = (e) => {
     setFormData({
