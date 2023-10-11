@@ -5,3 +5,20 @@
   grid-template-columns: repeat(5, auto);
   color: red;
 }
+
+.title {
+  display: block;
+  margin: 25px;
+  font-size: 50px;
+  border: none;
+}
+
+.description {
+  display: block;
+  max-width: 75%;
+  width: 650px;
+  margin: 25px;
+  font-size: 15px;
+  height: auto;
+  border: 1px solid rgba(191, 191, 191, .5);
+}

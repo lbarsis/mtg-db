@@ -1,26 +1,62 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import CardItem from '../browse/CardItem';
 import { WishlistContext } from '../../context/wishlistContext';
 
 function WishlistCardList() {
   const { wishlistId } = useParams()
-  const {wishlist, setWishlist} = useContext(WishlistContext)
+  const { wishlist, setWishlist, handleUpdateWishlist } = useContext(WishlistContext)
+  const [formData, setFormData] = useState({
+    wishlist_name: "",
+    description: ""
+  })
 
   useEffect(() => {
     fetch(`/wishlists/${wishlistId}`)
-    .then(r => r.json())
-    .then(deck => setWishlist(deck))
-  },[wishlistId, setWishlist])
-  
+      .then(r => r.json())
+      .then(wishlist => setWishlist(wishlist))
+  }, [wishlistId, setWishlist])
+
+  useEffect(() => {
+    if (wishlist) {
+      setFormData({
+        wishlist_name: wishlist.wishlist_name || "",
+        description: wishlist.description || ""
+      })
+    }
+  }, [wishlist])
+
+  const handleChangeFormData = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
   const displayWishlistCards = wishlist.wishlist_cards?.map(wishlist_card => {
-    return <CardItem card={wishlist_card.card.card_data} key={wishlist_card.card.id}/>
+    return <CardItem card={wishlist_card.card.card_data} key={wishlist_card.card.id} />
   })
 
   return (
-    <div className='card-list'>
-      {displayWishlistCards}
-    </div>
+    <>
+      <input className='title'
+        name="wishlist_name"
+        onChange={handleChangeFormData}
+        value={formData.wishlist_name}
+        onBlur={() => handleUpdateWishlist(wishlist, formData)}
+      />
+
+      <textarea className='description'
+        name="description"
+        onChange={handleChangeFormData}
+        value={formData.description}
+        onBlur={() => handleUpdateWishlist(wishlist, formData)}
+      />
+
+      <div className='card-list'>
+        {displayWishlistCards}
+      </div>
+    </>
   );
 }
 

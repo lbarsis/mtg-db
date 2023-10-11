@@ -19,6 +19,7 @@ function CollectionCardList() {
         r.json().then((cards) => {
           setCollectionCards(cards)
           // console.log(cards)
+          
         });
       }
     });

@@ -10,14 +10,19 @@ class DecksController < ApplicationController
   end
 
   def create
-    deck = @current_user.decks.create!(deck_params)
+    deck = @current_user.decks.create!(deck_name:  "New Deck #{@current_user.decks.length + 1}")
     render json: deck, status: :ok
   end
-  
+
+  def update
+    deck = @current_user.decks.find(params[:id])
+    deck.update!(deck_params)
+    render json: deck, status: :ok
+  end
 
   private
 
   def deck_params
-    params.permit(:deck_name, :description).merge(deck_name: "New Deck #{@current_user.decks.length + 1}")
+    params.permit(:id, :deck_name, :description)
   end
 end

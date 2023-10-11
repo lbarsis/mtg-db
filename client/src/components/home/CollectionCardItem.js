@@ -13,6 +13,7 @@ function CollectionCardItem({ card }) {
         card_data: card
       })
     })
+    
       .then(r => {
         if (r.ok) {
           r.json().then(data => console.log(data))

@@ -51,8 +51,19 @@ function WishlistProvider({ children }) {
     })
   }
 
+  const handleUpdateWishlist = (wishlist, formData) => {
+    fetch(`/wishlists/${wishlist.id}`, {
+      method: 'PATCH',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        wishlist_name: formData.wishlist_name,
+        description: formData.description
+      })
+    })
+  } 
+
   return (
-    <WishlistContext.Provider value={{ wishlists, setWishlists, handleAddWishlist, handleAddCardToWishlist, wishlist, setWishlist, handleUpdateWishlistList }}>
+    <WishlistContext.Provider value={{ wishlists, setWishlists, handleAddWishlist, handleAddCardToWishlist, wishlist, setWishlist, handleUpdateWishlistList, handleUpdateWishlist }}>
       {children}
     </WishlistContext.Provider>
   );
